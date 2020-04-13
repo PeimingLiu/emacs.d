@@ -11,7 +11,6 @@
 
 ;; default theme
 (add-hook 'after-init-hook 'color-theme-sanityinc-tomorrow-night)
-(color-theme-sanityinc-tomorrow-night)
 
 (provide 'init-themes)
 
