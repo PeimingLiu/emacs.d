@@ -2,6 +2,8 @@
   :ensure t
   :commands global-company-mode
   :init
+  (setq company-minimum-prefix-length 1)
+  (setq company-idle-delay 0.0) ;; default is 0.2
   (add-hook 'after-init-hook 'global-company-mode)
   :bind
   (

@@ -1,5 +1,4 @@
 ;; rainbow-delimiter
-
 (use-package rainbow-delimiters
   :ensure t
   :commands rainbow-delimiters-mode

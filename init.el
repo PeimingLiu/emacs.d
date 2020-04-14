@@ -1,6 +1,10 @@
 (setq auto-save-default nil)
 (setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
 
+;; full screen on startup
+(custom-set-variables
+ '(initial-frame-alist (quote ((fullscreen . maximized)))))
+
 ;; disable redundant UI elements
 (tool-bar-mode -1)
 (set-scroll-bar-mode nil)
@@ -41,7 +45,8 @@
 (require 'init-ui)
 (require 'init-company)
 (require 'init-git)
-
+(require 'init-projectile)
+(require 'init-lsp)
 
 
 (when (file-exists-p custom-file)

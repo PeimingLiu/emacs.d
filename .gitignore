@@ -5,3 +5,5 @@ recentf
 auto-save-list
 custom.el
 transient
+*lsp-session*
+*.eld
