@@ -39,6 +39,10 @@
 (require 'init-themes)
 (require 'init-ivy)
 (require 'init-ui)
+(require 'init-company)
+(require 'init-git)
+
+
 
 (when (file-exists-p custom-file)
   (load custom-file))

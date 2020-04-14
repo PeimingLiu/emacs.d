@@ -2,3 +2,6 @@
 backup
 elpa
 recentf
+auto-save-list
+custom.el
+transient
