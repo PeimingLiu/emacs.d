@@ -1,48 +1,22 @@
-;;(require 'hl-line+)
+(add-to-list 'load-path (expand-file-name "theme" user-emacs-directory))
 
-;;(global-linum-mode 1)
-;;(global-hl-line-mode t)
-;;(toggle-hl-line-when-idle)
+;; add theme path into load path
+(let ((theme-path (expand-file-name "theme" user-emacs-directory)))
+  (dolist (sub-path (directory-files theme-path nil directory-files-no-dot-files-regexp))
+    (let ((abs-path (expand-file-name sub-path theme-path)))
+      (if (file-directory-p abs-path)
+          (add-to-list 'load-path abs-path)))))
+
+(require 'lambda-themes)
+(load-theme 'lambda-dark)
 
 (setq use-file-dialog nil)
 (setq use-dialog-box nil)
 (setq inhibit-startup-screen t)
+
 (global-hl-line-mode)
 
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
-
-;; theme
-;; (use-package kaolin-themes
-;;   :ensure t
-;;   :config
-;;   (load-theme 'kaolin-light t)
-;;   ;; (if (display-graphic-p)
-;;   ;;     (load-theme 'kaolin-light t)
-;;   ;;   (load-theme 'kaolin-dark t))
-;;   )
-;; (setq debug-on-error t)
-
-;; (use-package auto-dim-other-buffers
-;;   :ensure t
-;;   :init
-;;   (add-hook 'after-init-hook (lambda () (progn
-;; 					  (auto-dim-other-buffers-mode 1))))
-;;   :config
-;;   (if (display-graphic-p)
-;;     (custom-set-faces
-;;        '(auto-dim-other-buffers-face ((t (:background "gray97"))))
-;;        '(auto-dim-other-buffers-hide-face ((t (:background "gray97" :foreground "gray97"))))))
-;;   (custom-set-faces
-;;    '(auto-dim-other-buffers-face ((t (:background "color-235"))))
-;;    '(auto-dim-other-buffers-hide-face ((t (:background "color-235" :foregound "color235")))))
-;;   )
-
-(use-package color-theme-sanityinc-tomorrow
-  :ensure t
-  :config
-  (if (display-graphic-p)
-      (color-theme-sanityinc-tomorrow-day)
-    (color-theme-sanityinc-tomorrow-night)))
 
 (use-package doom-modeline
   :ensure t
@@ -65,6 +39,11 @@
 ;;   (setq highlight-indent-guides-method 'character)
 ;;   (setq highlight-indent-guides-responsive 'top)
 ;;   :hook (prog-mode . highlight-indent-guides-mode))
+
+(use-package rainbow-mode
+  :ensure t
+  :config
+  (rainbow-turn-on))
 
 (use-package ace-window
   :ensure t

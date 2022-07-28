@@ -78,17 +78,14 @@
   (when (display-graphic-p)
     (ns-raise-emacs)))
 
-(defun my/set-font(frame)
-  (set-frame-font "Fira Code 16" nil t))
-
 (add-hook 'after-make-frame-functions #'toggle-frame-maximized)
-(add-hook 'after-make-frame-functions #'my/set-font)
+;;(add-hook 'after-make-frame-functions #'my/set-font)
 
 ;; allow copyed text into macOS system clipboard
 (if (display-graphic-p)
     (progn
-      (toggle-frame-maximized)
-      (my/set-font))
+      (toggle-frame-maximized))
+;;      (my/set-font))
     (progn
       (setq xterm-tmux-extra-capabilities '(modifyOtherKeys setSelection))
       (setq xterm-extra-capabilities '(setSelection))
