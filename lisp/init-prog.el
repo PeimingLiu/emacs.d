@@ -18,7 +18,6 @@
 ;; get MLIR/LLVM MODE from llvm git repo
 ;; (el-get-bundle mlir
 ;;   :url "https://raw.githubusercontent.com/llvm/llvm-project/main/mlir/utils/emacs/mlir-mode.el")
-
 (global-tree-sitter-mode)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 (add-hook 'show-paren-mode #'prog-mode)

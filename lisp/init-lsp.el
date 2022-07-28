@@ -5,6 +5,11 @@
   (which-key-mode)
   (setq which-key-idle-delay 0.1))
 
+(defun pl/maybe-format-buffer ()
+  (if (not (eq (lsp--client-server-id client) 'ciderlsp))
+      (if (lsp-feature? "textDocument/formatting")
+          (lsp-format-buffer))))
+
 (use-package lsp-mode
   :ensure t
   :init
@@ -21,11 +26,14 @@
   (setq gc-cons-threshold 100000000)
   (setq lsp-eldoc-enable-hover nil)
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
+  (add-hook 'before-save-hook #'pl/maybe-format-buffer)
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-tramp-connection "clangd")
                     :major-modes '(c-mode c++-mode)
                     :remote? t
                     :server-id 'clangd-remote)))
+
+
 
 (use-package yasnippet
   :ensure t

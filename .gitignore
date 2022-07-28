@@ -4,7 +4,7 @@ elpa-*/*
 projectile*
 tramp
 network*
-lisp/init-google.el
+lisp/*google*.el
 .cache/
 .lsp-session-v1
 .mc-lists.el
