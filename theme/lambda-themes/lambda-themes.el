@@ -509,6 +509,13 @@ It should stick out from any other faces currently displayed."
      `(magit-signature-untrusted            ((,class     (:foreground ,lambda-blue))))
      `(magit-tag                            ((,class     (:foreground ,lambda-yellow))))
 
+;;;;; Smerge
+     `(smerge-upper                         ((,class     (:background ,lambda-mild))))
+     `(smerge-lower                         ((,class     (:background ,lambda-faint))))
+     `(smerge-markers                       ((,class     (:inherit magit-header-line))))
+     `(smerge-refined-added                 ((,class     (:foreground ,lambda-green :weight bold))))
+     `(smerge-refined-removed               ((,class     (:foreground ,lambda-red :weight bold))))
+     `(smerge-refined-changed               ((,class     (:inherit magit-header-line))))
 
 ;;;;; Directories
 ;;;;;; All The Icons Dired
