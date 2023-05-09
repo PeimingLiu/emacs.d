@@ -16,6 +16,20 @@
 
 (global-set-key (kbd "C-/") 'undo-or-comment)
 
+(defun revert-all-buffers ()
+  "Refreshes all open buffers from their respective files"
+  (interactive)
+  (let* ((list (buffer-list))
+         (buffer (car list)))
+    (while buffer
+      (when (and (buffer-file-name buffer)
+                 (not (buffer-modified-p buffer)))
+        (set-buffer buffer)
+        (ignore-errors (revert-buffer t t t)))
+      (setq list (cdr list))
+      (setq buffer (car list))))
+  (message "Refreshed open files"))
+
 (setq-default cursor-type 'bar)
 
 ;; multi-cursor support
@@ -48,6 +62,7 @@
   :bind
   (("C-M-p" . 'mc/mark-previous-like-this)
    ("C-M-n" . 'mc/mark-next-like-this)
+   ("C-M-a" . 'mc/mark-all-like-this)
    ("C-M-m" . 'mc/edit-lines)))
 
 

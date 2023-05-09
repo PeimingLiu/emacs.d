@@ -5,10 +5,10 @@
   (which-key-mode)
   (setq which-key-idle-delay 0.1))
 
+;; TODO: filter out cider lsp
 (defun pl/maybe-format-buffer ()
-  (if (not (eq (lsp--client-server-id client) 'ciderlsp))
-      (if (lsp-feature? "textDocument/formatting")
-          (lsp-format-buffer))))
+  (if (lsp-feature? "textDocument/formatting")
+      (lsp-format-buffer)))
 
 (use-package lsp-mode
   :ensure t
@@ -87,6 +87,9 @@
   :config
   (global-set-key (kbd "M-t") #'treemacs-select-window)
   (global-set-key (kbd "s-t") #'treemacs))
+
+(use-package lsp-treemacs
+  :ensure t)
 
 (use-package treemacs-projectile
   :after (treemacs projectile)

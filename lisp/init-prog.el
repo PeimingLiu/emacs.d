@@ -21,6 +21,7 @@
 (global-tree-sitter-mode)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 (add-hook 'show-paren-mode #'prog-mode)
+(add-hook 'flyspell-prog-mode #'prog-mode)
 
 ;; smart parenthesis
 (use-package smartparens-config

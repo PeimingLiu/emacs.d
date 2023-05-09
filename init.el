@@ -11,8 +11,7 @@
 ;; make trailing whitespace more visible
 (setq show-trailing-whitespace t)
 (set-face-background 'trailing-whitespace "red")
-;; always delete trailing whitespace before saving the file
-(add-hook 'before-save-hook #'delete-trailing-whitespace)
+(add-hook 'fundamental-mode-hook #'google-maybe-show-trailing-whitespace)
 
 (setq-default frame-title-format
               '(:eval
@@ -125,5 +124,9 @@
 
 (require 'init-magit)
 
-(if *running-on-google*
-    (require 'init-google))
+;;(if *running-on-google*
+;;    (require 'init-google))
+;;(put 'upcase-region 'disabled nil)
+
+;; always delete trailing whitespace before saving the file
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
