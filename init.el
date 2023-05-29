@@ -124,6 +124,7 @@
 
 (require 'init-magit)
 
+(require 'init-hydra)
 ;;(if *running-on-google*
 ;;    (require 'init-google))
 ;;(put 'upcase-region 'disabled nil)

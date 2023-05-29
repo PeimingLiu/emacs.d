@@ -26,7 +26,6 @@
 ;; smart parenthesis
 (use-package smartparens-config
   :ensure smartparens
-  :config (sp-use-smartparens-bindings)
   :hook (prog-mode . smartparens-mode))
 
 (use-package rainbow-delimiters

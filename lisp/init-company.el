@@ -2,6 +2,9 @@
 
 (setq tab-always-indent 'complete)
 
+(use-package fussy
+  :ensure t)
+
 (use-package company
   :ensure t
   :init
@@ -33,6 +36,9 @@
 
 (advice-add 'company-complete-selection :after 'my/cancel-complete-on-no-selection)
 
+;;
+;; fussy is out of maintainace
+;;
 (defun bb-company-capf (f &rest args)
   "Manage `completion-styles'."
   (if (length< company-prefix 2)
@@ -50,6 +56,4 @@
 (advice-add 'company--transform-candidates :around 'bb-company-transformers)
 (advice-add 'company-capf :around 'bb-company-capf)
 
-
 (provide 'init-company)
-
