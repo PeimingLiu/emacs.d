@@ -82,18 +82,18 @@
 ;;   :if (display-graphic-p))
 
 ;; TODO: for lsp-treemacs
-(use-package treemacs
-  :ensure t
-  :config
-  (global-set-key (kbd "M-t") #'treemacs-select-window)
-  (global-set-key (kbd "s-t") #'treemacs))
-
-(use-package lsp-treemacs
-  :ensure t)
-
-(use-package treemacs-projectile
-  :after (treemacs projectile)
-  :ensure t)
+;; (use-package treemacs
+;;   :ensure t
+;;   :config
+;;   (global-set-key (kbd "M-t") #'treemacs-select-window)
+;;   (global-set-key (kbd "s-t") #'treemacs))
+;;
+;; (use-package lsp-treemacs
+;;   :ensure t)
+;;
+;; (use-package treemacs-projectile
+;;   :after (treemacs projectile)
+;;   :ensure t)
 
 
 (provide 'init-lsp)

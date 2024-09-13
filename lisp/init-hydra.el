@@ -50,4 +50,41 @@
 
 (define-key prog-mode-map (kbd "C-c s") 'hydra-smartparens/body)
 
+;; hydra for project.el
+(defhydra hydra-project (:hint nil)
+  "
+       PROJECT: %(project-root (project-current t))
+
+ [_!_] shell command                   [_b_] switch to buffer  [_v_] vc dir        [_p_] swtich project
+ [_&_] async shell command             [_s_] shell             [_c_] compile       [_g_] find regexp
+ [_f_] find file                       [_d_] find dir          [_e_] eshell        [_G_] project or external find regexp
+ [_F_] project or external find file   [_D_] project dired     [_k_] kill buffer   [_r_] query replace regex
+ [_x_] execute extended command        [_o_] any command       [_l_] list buffers
+
+ "
+  ;; Moving
+  ("!" project-shell-command)
+  ("&" project-async-shell-command)
+  ("f" project-find-file)
+  ("F" project-or-external-find-file)
+  ("b" project-switch-to-buffer)
+  ("s" project-shell)
+  ("d" project-find-dir)
+  ("D" project-dired)
+  ("v" project-vc-dir)
+  ("c" project-compile)
+  ("e" project-eshell)
+  ("k" project-kill-buffers)
+  ("p" project-switch-project)
+  ("g" project-find-regexp)
+  ("G" project-or-external-find-regexp)
+  ("r" project-query-replace-regexp)
+  ("x" project-execute-extended-command)
+  ("o" project-any-command)
+  ("l" project-list-buffers)
+  ("q"   nil "cancel" :color blue))
+
+(define-key global-map (kbd "C-c p") 'hydra-project/body)
+
+
 (provide 'init-hydra)
