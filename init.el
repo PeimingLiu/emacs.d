@@ -30,12 +30,7 @@
                           "[no file]")))))
 
 
-(global-set-key (kbd "M-SPC") #'set-mark-command)
-
 (defconst *is-a-mac* (eq system-type 'darwin))
-(defconst *running-on-google*
-  (require 'google nil 'noerror))
-
 (defconst normal-gc-cons-threshold (* 20 1024 1024))
 (defconst init-gc-cons-threshold   (* 128 1024 1024))
 
@@ -84,14 +79,22 @@
 (if (display-graphic-p)
     (progn
       (toggle-frame-maximized))
-;;      (my/set-font))
     (progn
       (setq xterm-tmux-extra-capabilities '(modifyOtherKeys setSelection))
       (setq xterm-extra-capabilities '(setSelection))
-      (xterm-mouse-mode)))
+      (require 'mouse)
+      (xterm-mouse-mode t)
+      (global-set-key [mouse-4] (lambda ()
+                                  (interactive)
+                                  (scroll-down 1)))
+      (global-set-key [mouse-5] (lambda ()
+                                  (interactive)
+                                  (scroll-up 1)))
+      (defun track-mouse (e))
+      (setq mouse-sel-mode t)))
 
 (require 'package)
-;;
+
 ;; init elpa and use-pacakge
 (require 'init-elpa)
 
@@ -108,26 +111,17 @@
 (require 'init-ivy)
 
 ;; projectile
-(require 'init-project)
-
-;; docker tramp
-(require 'init-docker)
+;; (require 'init-project)
 
 ;;
 (require 'init-prog)
 
-;; (if (google-p)
-;;     (require 'init-google-lsp)
-;;   (require 'init-lsp))
-
-(require 'init-lsp)
+;; (require 'init-lsp)
 
 (require 'init-magit)
 
 (require 'init-hydra)
-;;(if *running-on-google*
-;;    (require 'init-google))
-;;(put 'upcase-region 'disabled nil)
+
 
 ;; always delete trailing whitespace before saving the file
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
